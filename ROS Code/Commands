@@ -1,0 +1,56 @@
+BASH
+- go to dir	    [cd ...] [cd] [cd ..]
+- list dir files    [ls]
+- create dir        [mkdir ...] [mkdir -p ...]
+- create file       [touch ...]
+- remove dir        [rm ...] [rm -r ...]
+- move file         [mv]
+- display dir       [pwd]
+- open VScode       [code ...]
+
+=============================================================================================================
+CREATE FILE COMPILE
+- create a ros package: [catkin_create_pkg (packagename) (libraries ex. std_msgs rospy roscpp)]
+- new file compiling instruction: CMakeList.txt --> [add_executable(filename dir)
+						    [target_link_libraries(filename ${catkin_LIBRARIES})]
+- create launch file: launch/filename.launch    --> [<launch>
+							<node name="" pkg="" type="" output=""/>
+                                                     </launch>]
+- source workspace [cd talker_ws]                                                                        ???
+		   [source devel/setup.bash]                                                             ???
+
+=============================================================================================================
+ROS GENERAL
+- compile                         [cd ~/catkin_ws]
+	                          [catkin_make]
+- initialize ROS master:          [roscore]
+
+VIEW TOPIC MSGS
+- initialize turtlebot hardwares: [roslaunch turtlebot_bringup minimal.launch]
+- view topic data:                [rostopic echo /...] ex. mobile_base/events/bumper scan odom cmd_vel_mux/input/teleop
+
+Execution
+- initialize turtlebot hardwares: [roslaunch turtlebot_bringup minimal.launch]
+- run contest gmapping:           [roslaunch mie443_contest1 gmapping.launch]
+- run contest code:               [rosrun mie443_contest1 contest1]
+
+RVIZ
+- open RVIZ:                      [roslaunch turtlebot_rviz_launchers view_navigation.launch]
+- save map:                       [rosrun map_server map_saver -f /home/turtlebot/...]
+
+=============================================================================================================
+Simulation - Stage
+- run Stage simulator:            [roslaunch mie443_stage turtlebot_in_stage_contest1.launch]
+- run Stage gmapping:             [rosrun gmapping slam_gmapping]
+- run contest code:               [rosrun mie443_contest1 contest1]
+
+Simulation - Gazebo
+- run simulated world:            [roslaunch mie443_contest1 turtlebot_world.launch world:=1] ex. =2
+- run Gazebo gmapping:            [roslaunch turtlebot_gazebo gmapping_demo.launch]
+- run contest code:               [rosrun mie443_contest1 contest1]
+
+=============================================================================================================
+Gmapping Demo
+- initialize turtlebot hardwares:      [roslaunch turtlebot_bringup minimal.launch]
+- run turtlebot gmapping demo:         [roslaunch turtlebot_navigation gmapping_demo.launch]
+- run turtlebot base keyboard control: [roslaunch turtlebot_teleop keyboard_teleop.launch]
